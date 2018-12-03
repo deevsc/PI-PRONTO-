@@ -1,0 +1,265 @@
+<!DOCTYPE html> 
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="https://fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet"> 
+	<link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+
+	
+	<title>modificar perfil</title>
+
+	<style type="text/css">
+	body{
+		display:flex;
+		flex-direction: column;
+		justify-content: center;
+       	align-items: center;
+       	background-color:  #98b7d6; 
+       	margin: 0;
+        padding: 0;
+		}
+
+	div.morango{
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+	}
+
+	.morango div.logo {
+		height: 2em;
+		width: 100%;
+		background-color: #98b7d6;
+		font-family: 'Pacifico', cursive;
+		font-size: 6vw;
+		color: white;
+		text-align: center;
+		position: fixed; 
+		top: 0;
+		border: 0;
+		border-right: none;
+	}
+
+	div.morango div.dados{
+		
+		justify-content: center;
+		align-items: center;
+	}
+
+	.morango div.infIn{
+		background-color:  #98b7d6;
+		color: black;
+		font-family: 'open sans';
+		font-size: 1.3em;
+		text-align: center;
+		border: none;
+		width: 75vw;
+		align-self: center
+ 
+	}
+
+	div.morango div.dados .sep{
+		display: flex;
+		justify-content: center;
+		margin-top: 1em
+	}
+
+	div.buttonApagar{
+		display: flex;
+		justify-content: center;
+		margin-top: 5em;
+	}
+
+	input{
+		border-radius: 5px;
+        position: center;
+        display: flex;
+        width: 75vw;
+        height: 5vh;
+        font-family: 'open sans';
+        font-size: 4.5vw;
+		}
+
+	button{
+		border-radius: 5px;
+		height: 5vh;
+		width: 75vw;
+		background-color: white;
+		font-family:'open sans';
+		font-size: 4.5vw;
+		text-align: center;
+		border: none;
+	}
+
+	.foto_perfil{
+		align-self: center;
+	}
+
+	button.salvar{
+		background-color: #79e08a;
+		box-shadow: 2px
+	}
+
+	button.apagar{
+		border-radius: 5px;
+		height: 5vh;
+		width: 75vw;
+		background-color: #ef5b5b;
+		font-family:'open sans';
+		font-size: 4.5vw;
+		text-align: center;
+		border: none;
+	}
+
+	footer{
+		display: flex;
+		flex-direction: row;
+		width: 100%;
+		flex-grow: 4;
+		background-color: #98b7d6;
+		font-family: Roboto;
+		height: 9vh;
+		color: white;
+		text-align: center;
+		position: fixed; 
+		bottom: 0;
+		border: 0;
+		border-right: none;
+	}
+
+	button.footer {
+		background-color: #98b7d6;
+		border: none;
+		color:black;
+		flex-grow: 1;
+		font-size: 18px;
+	}
+
+	</style>
+	
+
+</head>
+
+<body>
+	<div class = morango> 
+		<div class = logo>
+		bloop 
+		</div>
+
+		<div class = "infIn">
+			mude tudo o que quiser 
+		</div>
+
+		<div class = dados>
+			<div class="" ="dados">
+		<form>
+			<div class = " sep nome">
+				<input class="form-dados" name="nome" type="text">	
+			</div>
+
+			<div class = " sep email">
+				<input class="form-dados" name="email" type="text">	
+			</div>
+
+			<div class = "sep telefone">
+				<input class="form-dados" name="telefone" type="text">
+			</div>
+
+			<div class = "sep bio">
+				<input class="form-dados" name="bio" type="text">
+			</div>
+
+			<div class="foto_perfil">
+				<input type="file" name="foto_perfil"> 
+			</div>
+
+			<div class= "sep buttonCadastrar">
+				<button class="salvar">- salvar -</button>
+			</div>
+
+			<div class="buttonApagar">
+				<button class="apagar"> apagar meu perfil </button>
+			</div>
+
+		</form>
+			</div>
+
+		</div>
+	</div>
+
+	<footer>
+		<button class="footer"><a href="buscar.html">buscar</a></button>
+		<button class="footer"><a href="cadItem.html">vender</a></button>
+		<button class="footer"><a href="desejos.html">desejos</button>
+		<button class="footer"><a href="perfilUsuario.html">perfil</a></button>
+	</footer>
+
+</body>
+<script src="check-login.js"></script>
+<script type="text/javascript">
+	var dados = document.querySelector("div.dados");
+	var nome = dados.querySelector("input[name=nome]") 
+	var email = dados.querySelector("input[name=email]")
+	var telefone = dados.querySelector("input[name=telefone]")
+	var bio = dados.querySelector("input[name=bio]")
+	var foto_perfil = dados.querySelector("input[name=foto_perfil]")
+
+	async function buscarDados(){
+
+        var requisicao = await fetch(`../consulta/usuario.php?username`)
+        var usuario = await requisicao.json()
+                
+        nome.value = usuario.nome
+        email.value = usuario.email
+        telefone.value = usuario.telefone 
+        bio.value = usuario.bio
+    }
+
+    buscarDados()
+
+	let domForm = document.querySelector("form") 
+	let domButton = document.querySelector(".buttonCadastrar button")
+	let domButtonSalvar = document.querySelector(".salvar")
+	domForm.addEventListener('submit', ev => ev.preventDefault())
+	var domFileFoto = document.querySelector('[name=foto_perfil]').files[0]
+
+	domButton.addEventListener('click', async ev => {
+		let domInputs = document.querySelectorAll('[name]')
+		let objSend = {}
+
+		domInputs.forEach(el => {
+			objSend[ el.name ] = el.value
+		})
+
+		let requisicao = await fetch("../consulta/usuario.php", {
+			method: "PUT",
+			body: JSON.stringify( objSend )
+		})
+
+		let resposta = await requisicao.text();
+		alert(resposta)
+
+		if (resposta) { //essa é uma função que testei várias vezes e não consegui fazer funcionar ;-;
+			var frm = new FormData();
+			frm.append('foto_perfil', domFileFoto) 
+			frm.append('user', resposta.user)
+			frm.append('image_id', resposta.image_id) 
+			await fetch('../consulta/inserir-imagem-perfil.php', {
+				method: 'PUT',
+				body: frm,
+			});
+
+			alert('dados cadastrados')
+			//location.href = "buscar.html"
+		} else {
+			alert('ups, alguma coisa deu muito errado')
+		}
+	})
+</script>
+</html>

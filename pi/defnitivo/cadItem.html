@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="https://fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet"> 
+	<link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+
+	
+	<title>cadastro de item</title>
+
+	<style type="text/css">
+	body{
+		display:flex;
+		flex-direction: column;
+		justify-content: center;
+       	align-items: center;
+       	background-color: #98b7d6; 
+       	margin: 0;
+        padding: 0;
+		}
+
+	div.morango{
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+	}
+
+	.morango div.logo {
+		height: 2em;
+		width: 100%;
+		background-color:#98b7d6;
+		font-family: 'Pacifico', cursive;
+		font-size: 6vw;
+		color: white;
+		text-align: center;
+		position: fixed; 
+		top: 0;
+		border: 0;
+		border-right: none;
+	}
+
+	div.morango div.dados{
+		
+		justify-content: center;
+		align-items: center;
+	}
+
+	.morango div.infIn{
+		background-color: #98b7d6;
+		color: black;
+		font-family: open sans;
+		font-size: 1.3em;
+		text-align: center;
+		border: none;
+		width: 75vw;
+		align-self: center
+
+	}
+
+	div.morango div.dados .sep{
+		display: flex;
+		justify-content: center;
+		margin-top: 1em
+	}
+
+	input{
+		border-radius: 5px;
+        position: center;
+        display: flex;
+        width: 75vw;
+        height: 5vh;
+        font-family: open sans;
+        font-size: 1em;
+        color: black;
+		}
+
+	input.foto{
+		border-radius: 5px;
+		position: center;
+		display: flex;
+		flex-direction: column;
+		font-family: open sans;
+		font-size: 1em;
+		width: 75vw;
+		height: 5vh;
+	}
+
+	    button{
+			border-radius: 5px;
+			height: 5vh;
+			width: 75vw;
+			background-color: white;
+			font-family: open sans;
+			font-size: 4.5vw;
+			text-align: center;
+			border: none;
+		}
+
+		footer{
+		display: flex;
+		flex-direction: row;
+		width: 100%;
+		flex-grow: 4;
+		background-color: #98b7d6;
+		font-family: Roboto;
+		height: 9vh;
+		color: white;
+		text-align: center;
+		position: fixed; 
+		bottom: 0;
+		border: 0;
+		border-right: none;
+
+		}
+
+		button.footer {
+		background-color: #98b7d6;
+		border: none;
+		color:black;
+		flex-grow: 1;
+		font-size: 18px;
+	}
+
+
+	</style>
+	
+
+</head>
+
+<body>
+	<div class = morango>
+		<div class = logo>
+		bloop 
+		</div>
+
+		<div class = "infIn">
+			preencha os campos para fazer o cadastro do item
+		</div>
+
+		<div class = dados>
+			<form name="item">
+			<div class = " sep titulo">
+				<input class="form-dados" name="titulo" type="text" placeholder=" titulo principal ">	
+			</div>
+
+			<div class = "sep subtitulo">
+				<input class="form-dados" name="subtitulo" type="text" placeholder=" subtitulo">	
+			</div>
+
+			<div class = "sep autor">
+				<input class="form-dados" name="autor" type="text" placeholder=" autor">
+			</div>
+
+			<div class = "sep editora">
+				<input class="form-dados" name="editora" type="text" placeholder=" editora" >
+			</div>
+
+			<div class = "sep genero">
+				<input class="form-dados" name="genero" type="text" placeholder=" genero">	
+            </div>
+
+            <div class = "sep descricao">
+				<input class="form-dados" name="descricao" type="text" placeholder="descreva o item (pode ser a sinopse)">	
+            </div>
+            
+            <div class = "sep valor">
+				<input class="form-dados" name="valor" type="text" placeholder=" valor(em reais)">
+			</div>
+
+			<div class="sep foto">
+				<input type="file" name="foto" class="foto">
+			</div>
+
+			<div class= "sep buttonCadastrar">
+				<button>tudo pronto :)</button>
+			</div>
+			</form>
+		</div>
+		<footer>
+			<button class="footer"><a href="buscar.html">buscar</a></button>
+			<button class="footer"><a href="cadItem.html">vender</a></button>
+			<button class="footer"><a href="desejos.html">desejos</button>
+			<button class="footer"><a href="perfilUsuario.html">perfil</a></button>
+		</footer>
+	</div>
+
+</body>
+<script src="check-login.js"></script>
+<script type="text/javascript">
+	let domForm = document.querySelector("form") 
+	let domButton = document.querySelector(".buttonCadastrar button")
+	domForm.addEventListener('submit', ev => ev.preventDefault())
+
+	domButton.addEventListener('click', async ev => {
+		let domInputs = document.querySelectorAll('[name]')
+		let objSend = {}
+
+		domInputs.forEach(el => {
+			objSend[ el.name ] = el.value
+		})
+
+		var domFileFoto = document.querySelector('[name=foto]').files[0]
+
+		let requisicao = await fetch("../consulta/item.php", {
+			method: "PUT",
+			body: JSON.stringify( objSend )
+		})
+
+		let resposta = await requisicao.json();
+
+		console.log(resposta)
+
+		if (resposta) {
+			var frm = new FormData(); // nessa parte vai criar pra imagem enviada aquele id unico que vai ser cadastrado no banco 
+			frm.append('foto', domFileFoto) 
+			frm.append('user', resposta.user)
+			frm.append('image_id', resposta.image_id) 
+			await fetch('../consulta/inserir-imagem-item.php', {
+				method: 'POST',
+				body: frm,
+			});
+
+			alert('dados cadastrados')
+			location.href = "buscar.html"
+
+		} else {
+			alert('ups, alguma coisa está errada. tem certeza plena e absoluta que digitou os dados certinho?')
+		} 
+	})
+</script> 
+</html>

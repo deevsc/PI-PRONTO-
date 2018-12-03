@@ -1,0 +1,12 @@
+<?php
+
+$username =  trim($_GET['user'], '"');
+
+if (!is_dir($folder))
+	mkdir($folder, 0777, true);
+
+if (get_uploaded_file($_FILES['foto']['tmp_name'], $folder . $_GET['image_id'])) {
+   echo "Ai esta a foto";
+} else {
+    echo "Deu ruim \n";
+}

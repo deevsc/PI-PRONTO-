@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+
+	
+	<title>cadastro usuário</title>
+
+	<style type="text/css">
+	body{
+		display:flex;
+		flex-direction: column;
+		justify-content: center;
+       	align-items: center;
+       	background-color:  #98b7d6; 
+       	margin: 0;
+        padding: 0;
+	}
+
+	div.morango{
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+	}
+
+	.morango div.logo {
+		height: 2em;
+		width: 100%;
+		background-color:  #98b7d6;
+		font-family: Pacifico;
+		font-size: 6vw;
+		color: white;
+		text-align: center;
+		position: fixed; 
+		top: 0;
+		border: 0;
+		border-right: none;
+	}
+
+	div.morango div.dados{
+		justify-content: center;
+		align-items: center;
+	}
+
+	.morango div.infIn{
+		background-color: #98b7d6;
+		color: white;
+		font-family: Open sans;
+		font-size: 5.5vw;
+		text-align: justify;
+		border: none;
+		width: 75vw;
+		align-self: center
+	}
+
+	div.morango .sep{
+		display: flex;
+		justify-content: center;
+		margin-top: 1em
+	}
+
+	div.morango .hipopotamo{
+		background-image: url('./img/hippobranco.png');
+		background-repeat: no-repeat;
+		background-size: 30%;
+		height: 20%;
+		align-self: center;
+		width: 30%;
+		margin-left: 3em;
+	}
+
+	div.morango .bemvindo{
+		display: flex;
+		justify-content: center;
+		margin: 1em;
+		font-family: pacifico;
+		text-align: center;
+		color: white;
+		font-size: 8vw;
+		align-items: center
+	}
+	input{
+		border-radius: 5px;
+        position: center;
+        display: flex;
+        width: 75vw;
+        height: 5vh;
+        font-family: Open sans;
+        font-size: 4.5vw;
+	}
+
+	option{
+		border-radius: 5px;
+        position: center;
+        display: flex;
+        width: 75vw;
+        height: 5vh;
+        font-family: Roboto;
+        font-size: 4.5vw;
+	}
+
+	select{
+		border-radius: 5px;
+        position: center;
+        display: flex;
+        width: 75vw;
+        height: 5vh;
+        font-family: Roboto;
+        font-size: 4.5vw;
+	}
+
+	    button{
+		border-radius: 5px;
+		height: 5vh;
+		width: 75vw;
+		background-color: white;
+		font-family: Roboto;
+		font-size: 4.5vw;
+		text-align: center;
+		border: none;
+	}
+
+	</style>
+	
+
+</head>
+
+<body>
+	<div class="morango">
+		<div class="logo">
+		bloop 
+		</div>
+
+		<div class="infIn">
+			preencha os campos para fazer seu cadastro:
+		</div>
+
+			<form name="usuario">
+				<div class="sep nome">
+					<input class="form-usuario" name="nome" type="text" placeholder=" seu nome ou apelido">
+				</div>
+
+				<div class="sep email">
+					<input class="form-usuario" name="email" type="email" placeholder=" seu e-mail">	
+				</div>
+
+				<div class="sep telefone">
+					<input class="form-usuario" name="telefone" type="text" placeholder=" seu telefone (melhor com zap)">
+				</div>
+
+				<div class="sep username">
+					<input class="form-usuario" name="username" type="text" placeholder=" nome de usuário">
+				</div>
+
+				<div class="sep senha">
+					<input class="form-usuario" name="senha" type="password" placeholder=" crie uma senha mágica">
+				</div>
+
+				<div class="sep bio">
+					<input type="text" name="bio" placeholder=" fale sobre você ">
+				</div>
+
+				<div class="sep buttonCadastrar">
+					<button>tudo pronto :)</button>
+				</div>
+
+				<div class="bemvindo">
+					 bem vindo ao bloop 
+				</div>
+			</form>
+	</div>
+	<script>
+
+		let domForm = document.querySelector("form") 
+		let domButton = document.querySelector(".buttonCadastrar button")
+		domForm.addEventListener('submit', ev => ev.preventDefault())
+
+		domButton.addEventListener('click', async ev => {
+			let domInputs = document.querySelectorAll('[name]') 
+			let objSend = {}
+
+			domInputs.forEach(el => {
+				objSend[ el.name ] = el.value
+			})
+
+			
+
+			let requisicao = await fetch("../consulta/usuario.php", {
+				method: "POST", // lembra que a função ta trocada mas tudo funciona
+				body: JSON.stringify( objSend )
+			})
+
+			let resposta = await requisicao.text();
+
+			console.log(resposta)
+
+
+		if (resposta) {
+
+			alert('dados cadastrados')
+			location.href = "buscar.html"
+
+		} else {
+			alert('ups, alguma coisa está errada. tem certeza plena e absoluta que digitou os dados certinho?')
+		} 
+		})
+		
+	</script>

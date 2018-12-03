@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
+	
+	<title>login</title>
+
+	<style type="text/css">
+	body{
+		display:flex;
+		flex-direction: column;
+		justify-content: center;
+       	align-items: center;
+       	background-color: #98b7d6; 
+       	margin: 0;
+        padding: 0;
+	}
+
+	div.maracuja{
+		position: absolute;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+	}
+
+	div.maracuja div.logo {
+		background-image: url('./img/hippobranco.png');
+		background-repeat: no-repeat;
+		background-size: 90%;
+		height: 50%;
+		align-self: center;
+		width: 60%;
+		margin-left: 3em;
+	}
+
+	div.maracuja div.dados{
+		display: flex;
+		justify-content:center;
+		align-items: center;
+	}
+
+	div.maracuja div.dados .sep{
+		display: flex;
+		justify-content: center;
+		margin-top: 1em
+	}
+
+	input{
+		margin-left: 2px;
+	}
+
+	input{
+		border-radius: 5px;
+        position: center;
+        display: flex;
+        width: 75vw;
+        height: 5vh;
+        font-family: Roboto;
+        font-size: 4.5vw;
+	}
+
+	button.cadastrar{
+		border-radius: 5px;
+		height: 5vh;
+		width: 75vw;
+		background-color: white;
+		font-family: Roboto;
+		font-size: 4.5vw;
+		text-align: center;
+		border: none;
+	}
+
+	button.semCad{
+		height: 3em;
+		width: 100%;
+		background-color:  #98b7d6;
+		font-family: Roboto;
+		font-size: 5vw;
+		color: white;
+		text-align: center; 
+		position: fixed; 
+		bottom: 0;
+		border: 0;
+		border-right: none;
+	}
+
+	button.redefinir{
+		height: 2em;
+		width: 100%;
+		background-color:  #98b7d6;
+		font-family: Roboto;
+		font-size: 5vw;
+		color: white;
+		text-align: center;
+		border: 0;
+		border-right: none;
+	}
+
+	</style>
+	
+
+</head>
+
+<body>
+	<div class = maracuja>
+		<div class = logo>
+		</div>
+
+		<div class=dados>
+			<form action="login.php" method="post">
+			<div class = "sep username">
+				<input class="form-dados" name="username" type="text" placeholder="nome de usuário">
+			</div>
+
+			<div class="sep senha">
+				<input class="form-dados" name="senha" type="password" placeholder="senha" max-lengt = "20">	
+			</div>
+
+			<div class= "sep buttonCadastrar">
+				<button class="cadastrar">tudo pronto :)</button>
+			</div>
+
+			<div class= "sep buttonRedefinir">
+				<button class="redefinir">esqueci minha senha</button>
+			</div>
+
+			<div class = "sep newCadastro">
+				<button class = "semCad" name = "semCad"> <a href="cadComprador.html">ainda sem uma conta? se cadastra aqui </a></button>
+			</div>
+		</div>
+	</div>
+
+</body>
+<script type="text/javascript">
+	let domForm = document.querySelector("form") // criação de uma variável para representar o form e dom é tudo que tem a ver com a interface
+	let domButton = document.querySelector(".buttonCadastrar button")//criação de uma variável para o botão. .buttonCadastrar é referente a classe e button é o botão dentro dela, assim sendo, o js vai pegar o primeiro botão que está dentro da classe
+
+	domForm.addEventListener('submit', ev => ev.preventDefault())//aqui é pra dizer tipo "o form não faz o que tu ta acostumado não mermão"
+
+	let username = document.querySelector("[name=username]") 
+	let senha = document.querySelector("[name=senha]") 
+
+	domButton.addEventListener('click', async ev => {//quando clica no botão, vai executar tudo isso. o async é pra esperar que esteja conecatdo com o servidor senão nem adianta 
+		let domInputs = document.querySelectorAll('[name]')//vai pegar todas as propriedades que tem o valor name 
+		let objSend = {}//criação da variável pra armazenar tudo pego ali encima
+
+		domInputs.forEach(el => {//é tipo um for, que vai reretir essa ação pra cada objeto do onjSend(no caso os que tem name)
+			objSend[ el.name ] = el.value//seleciona o name do treco lá, mais o valor digitado pelo usuário
+		})
+
+		let requisicao = await fetch(`../consulta/login2.php?username=${username.value}&senha=${senha.value}`)
+
+		let resposta = await requisicao.json(); //criação da variavel resposta que é basicamente o retorno que tá la no final do método quando dá certo e .text() é pra transformar em texto porque chega em binário
+
+		if (resposta) {
+			location.href = "buscar.html"
+		} else {
+			alert('ups, alguma coisa está errada. tem certeza plena e absoluta que digitou os dados certinho?')
+		}
+	})
+	</script>
+</html>

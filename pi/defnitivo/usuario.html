@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+
+	
+	<title> perfil usuário </title>
+
+	<style type="text/css">
+	body{
+		display:flex;
+		flex-direction: column;
+		justify-content: center;
+       	align-items: center;
+       	background-color:  #98b7d6; 
+       	margin: 0;
+        padding: 0;
+	}
+
+	div.mom{
+		top: 0;
+        left: 0;
+        width: 100vw;
+        margin-top: 2.5em;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+	}
+
+	div.mom div.logo {
+		height: 2em;
+		width: 100%;
+		background-color:  #98b7d6;
+		font-family: Pacifico;
+		font-size: 6vw;
+		color: white;
+		text-align: center;
+		position: fixed; 
+		top: 0;
+		border: 0;
+		border-right: none;
+	}
+
+	div.mom div.capa{
+		background-image: url('./img/capa-comum.jpg'); 
+		background-repeat: no-repeat;
+		background-size: 100%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		background-color: lightpink;
+		width: 100%;
+		height: 10em;
+	}
+
+	div.capa .perfil{
+		display: flex;
+		border-radius: 100px;
+		background-image: url('./img/popotamo-perfil.jpg');
+		background-repeat: no-repeat;
+		background-size: 100%;
+		width: 30vw;
+		height: 30vw;
+	}
+
+	div.mom div.head div.perfil{
+		position: center;
+	}
+
+	div.mom div.sep{
+		position: center;
+		background-color: white;
+		font-family: 'open sans'; 
+		width: 90%; 
+		border-radius: 5px;
+		justify-content: center;
+		margin-top: 1em;
+		align-self: center;
+		display: flex;
+		flex-direction: column;
+	}
+
+	div.config{
+		align-self: center;
+		text-align: center;
+		position: center;
+		background-color:white;
+		font-family: 'open sans';
+		width: 50%;
+		border-radius: 5px;
+		height: 2em;
+		margin-top: 1em;
+	}
+
+	footer{
+		display: flex;
+		flex-direction: row;
+		width: 100%;
+		flex-grow: 4;
+		background-color: #98b7d6;
+		font-family: 'open sans';
+		height: 9vh;
+		color: white;
+		text-align: center;
+		position: fixed; 
+		bottom: 0;
+		border: 0;
+		border-right: none;
+	}
+
+	.nome .username{
+		text-align: center;
+		display: flex;
+	}
+	h1{
+		font-size: 6vw;
+	}
+
+	h2{
+		font-size: 4vw;
+	}
+
+	div.nome{
+		font-weight: bold;
+	}
+
+	button.config{
+		background-color: white;
+		font-family: 'open sans';
+		border: none;
+		font-size: 15px;
+	}
+
+
+	button.footer {
+		background-color: #98b7d6;
+		border: none;
+		color:black;
+		flex-grow: 1;
+		font-size: 18px;
+	}
+
+	</style>
+	
+
+</head>
+
+<body>
+	<div class = mom>
+		<div class="logo">
+		bloop 
+		</div>
+
+		<div class="capa">
+			<div class="perfil">
+			</div>
+		</div>
+
+		<div class="config">
+			<button class="config">avaliar esse usuário</button>
+		</div>
+
+		<div class="sep info" name="info">
+			<div name="nome"></div>
+			<div name="username"></div>
+			<hr>
+			<div name="media_avaliacao"></div>
+			<div name="total_avaliacao"></div>
+			<div name="bio"></div>
+		</div>
+
+		<div class="sep itens" name="itens">
+	
+		</div>
+
+		<div class="sep contato" name="contato">
+			<div name="email"></div>
+			<div name="telefone"></div>
+		</div>
+
+		
+
+	</div>
+
+	<footer>
+		<button class="footer"><a href="buscar.html">buscar</a></button>
+		<button class="footer"><a href="cadItem.html">vender</a></button>
+		<button class="footer"><a href="desejos.html">desejos</a></button>
+		<button class="footer"><a href="perfilUsuario.html">perfil</a></button>
+	</footer>
+</body>
+
+<script src="check-login.js"></script>
+<script type="text/javascript">
+
+	var info = document.querySelector("div.info");
+	var itens = document.querySelector("div.itens");
+	var contato = document.querySelector("div.contato");
+	var button = document.querySelector(".config");
+	var id = null;
+    async function buscarInfo(){
+        var requisicao = await fetch(`../consulta/buscar-usuario.php${location.search}`)
+        var usuario = await requisicao.json()
+        console.log(location);
+        console.log(usuario);
+        mostrarInfo(usuario)
+        mostrarItens(usuario)
+        mostrarContato(usuario)
+    }
+
+    buscarInfo()
+
+
+    function mostrarInfo(usuario){
+        info.innerHTML = "<div class='nome'>"+ usuario[0].nome +"</div>"
+        info.innerHTML += "<div class='username'>"+"@"+ usuario[0].username +"</div>"
+        info.innerHTML += "<div class='media_avaliacao'>"+ ("★ " + usuario[0].media_avaliacao||"sem média ") +"</div>"
+        info.innerHTML += "<div class='total_avaliacao'>"+ ("total de " + usuario[0].total_avaliacao + " avaliações"||"ainda não foi avaliado") +"</div>"
+        info.innerHTML += "<div class='bio'>"+ usuario[0].bio +"</div>"
+        id = usuario[0].id_usuario
+    }
+
+    function mostrarItens(usuario){
+    }
+
+    function mostrarContato(usuario){
+    	console.log(usuario.email)
+        contato.innerHTML += "<div.telefone>"+ " ✆  " + usuario[0].telefone +"</div>"
+        contato.innerHTML += "<div class='email'>"+ " ✉ " + usuario[0].email +"</div>"
+
+    }
+
+    button.addEventListener('click', (ev)=>{
+    	location.href=`avaliaUsuario.html?id_usuario=${id}`
+    })
+      
+
+</script>
+
+</html>

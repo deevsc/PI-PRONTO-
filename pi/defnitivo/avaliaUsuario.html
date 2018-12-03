@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="https://fonts.googleapis.com/css?family=Roboto: 300, 400" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+	
+	<title>avaliar usuario</title>
+
+	<style type="text/css">
+	body{
+		border-bottom: 3em;
+		display:flex;
+		flex-direction: column;
+		justify-content: center;
+       	align-items: center;
+       	background-color: #98b7d6; 
+       	margin: 0;
+        padding: 0;
+		}
+
+	div.mom{
+		bottom:3em;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+	}
+
+	form{
+		margin-top: 3em;
+		margin-left: 2em;
+	}
+
+	div.mom div.logo {
+		height: 2em;
+		width: 100%;
+		background-color: #98b7d6;
+		font-family: Pacifico, cursive;
+		font-size: 6vw;
+		color: white;
+		text-align: center;
+		position: fixed; 
+		top: 0;
+		border: 0;
+		border-right: none;
+	}
+
+	div.mom div.title{
+		display: flex;
+		background-color: black;
+		width: 100%;
+		height: 30%;
+		top: 3em;
+	}
+
+	div.mom div.head div.perfil{
+		position: center;
+	}
+
+	div.mom div.menu{
+		display: flex; 
+		flex-direction: row;
+		top: 5em;
+		margin: none;
+		width: 100%;
+	}
+
+	div.mom div.sep{
+		display: flex; 
+		flex-direction: column;
+		position: center;
+		background-color: white;
+		font-family: Open sans; 
+		text-align: center;
+		font-weight: 300;
+		width: 90%; 
+		border-radius: 5px;
+		justify-content: center;
+		align-items: center;
+		margin-top: 1em;
+		align-self: center;
+		font-size: 1em
+	}
+	.estrelas input[type=radio]{
+		display: none;
+	}
+	.estrelas label i.fa:before{
+	content: '\f005';
+	color: #FC0;
+	}
+	.estrelas  input[type=radio]:checked  ~ label i.fa:before{
+	color: #CCC;
+	}
+
+	.enviar{
+		align-self: center;
+	}
+
+	footer{
+		display: flex;
+		flex-direction: row;
+		width: 100%;
+		flex-grow: 4;
+		background-color: #98b7d6;
+		font-family: Roboto;
+		height: 9vh;
+		color: white;
+		text-align: center;
+		position: fixed; 
+		bottom: 0;
+		border: 0;
+		border-right: none;
+	}
+
+	button.footer {
+		background-color: #98b7d6;
+		border: none;
+		color:black;
+		flex-grow: 1;
+		font-size: 18px;
+	}
+
+	.titulo{
+		font-weight: bold
+	}
+
+	.titulo div{
+		font-weight: 500;
+	}
+
+	button{
+		border: none;
+		background-color: white;
+		flex-grow: 1;
+		margin-bottom: 1em
+	}
+
+	h1{
+		font-size: 5vw;
+		color: black;
+		font-weight: 300;
+
+	}
+
+	h2{
+		font-size: 4vw;
+		color: black;
+		font-weight: 300;
+	}
+
+	input{
+		margin-bottom: 1em; 
+		width: 80%;
+		height: 35px;
+		border-radius: 5px; 
+	}
+
+	button.envia{
+		align-self: center;
+		text-align: center;
+		position: center;
+		background-color:white;
+		font-family: 'open sans';
+		width: 50%;
+		border-radius: 5px;
+		height: 2em;
+		margin-top: 1em;
+		font-size: 2vh
+	}
+
+
+	</style>
+	
+
+</head>
+
+<body>
+
+	<div class = mom>
+		<div class="logo">
+		bloop 
+		</div>
+
+		<form method="post" action="avaliacao.php">
+		<div class="sep avaliaTratamento">
+			<div class="titulo"></div>
+
+			<div class="estrelas">
+				<label for="estrela_um"><i class="fa"></i></label>
+				<input type="radio" id="estrela_um" name="estrela" value="1">
+				
+				<label for="estrela_dois"><i class="fa"></i></label>
+				<input type="radio" id="estrela_dois" name="estrela" value="2">
+				
+				<label for="estrela_tres"><i class="fa"></i></label>
+				<input type="radio" id="estrela_tres" name="estrela" value="3">
+				
+				<label for="estrela_quatro"><i class="fa"></i></label>
+				<input type="radio" id="estrela_quatro" name="estrela" value="4">
+				
+				<label for="estrela_cinco"><i class="fa"></i></label>
+				<input type="radio" id="estrela_cinco" name="estrela" value="5"><br><br>
+			</div>
+		</div>
+
+		<div class="sep enviar">
+		<button class="envia">tudo pronto :)</button>
+		</div>
+		</form>
+
+
+	</div>
+
+	<footer>
+		<button class="footer"><a href="buscar.html">buscar</a></button>
+		<button class="footer"><a href="cadItem.html">vender</a></button>
+		<button class="footer"><a href="desejos.html">desejos</button>
+		<button class="footer"><a href="perfilUsuario.html">perfil</a></button>
+	</footer>
+
+	
+</body>
+<script src="check-login.js"></script>
+<script type="text/javascript">
+	var button = document.querySelector(".envia"); 
+	let input = document.querySelectorAll('input');
+	var titulo = document.querySelector(".titulo");
+	
+
+	var val = 5;
+	input.forEach((node) => {
+		node.addEventListener('click', ev=>{
+			val = node.value;
+		})
+	})
+
+	titulo.innerText = "";
+
+	async function buscarNome(){
+	var requisicao = await fetch(`../consulta/buscar-usuario.php${location.search}`)
+        var usuario = await requisicao.json()
+	 	titulo.innerText += "avaliação de " + usuario[0].nome;
+	 	titulo.innerHTML += '<hr>'
+	 	titulo.innerHTML += "<div>de uma forma geral, como você avalia o processo de compra/venda com esse usuário?</div>&nbsp"
+
+	 }
+
+	 buscarNome()
+
+	
+
+	button.addEventListener('click', async (ev)=>{ //função para enviar o valor concedido pelas estrelas. as estrelinhas nada mais são que um input do tipo radio com o css alterado e com um valor atribuído para cada um. admito que a transformação do radio em uma estrela eu peguei pronto de um cara, não fazia ideia de como transformar uma bola numa estrela
+		ev.preventDefault();
+		var requi = await fetch(`../consulta/avaliacao.php${location.search}&estrela=${val}`,  {method:"POST"})
+		location.href = (`usuario.html${location.search}`)
+	})
+</script>
+
+
+
+</html>

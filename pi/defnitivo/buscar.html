@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+	
+	<title>Buscar</title>
+
+	<style type="text/css">
+	body{
+		border-bottom: 3em;
+		display:flex;
+		flex-direction: column;
+		justify-content: center;
+       	align-items: center;
+       	background-color: #98b7d6; 
+       	margin: 0;
+        padding: 0;
+		}
+
+	div.mom{
+		bottom:4em;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+	}
+
+	div.mom div.logo {
+		height: 2em;
+		width: 100%;
+		background-color: #98b7d6;
+		font-family: Pacifico, cursive;
+		font-size: 6vw;
+		color: white;
+		text-align: center;
+		position: fixed; 
+		top: 0;
+		border: 0;
+		border-right: none;
+	}
+
+
+
+	div.mom div.preferidos, div.odiados, div.obras{
+		text-align: center;
+		display: flex;
+		flex-direction: column;
+		position: center;
+		background-color: white;
+		font-family: 'Open sans'; 
+		border-radius: 5px;
+		width: 90%;
+		justify-content: center;
+		margin-top: 1em;
+		align-self: center; 
+		margin: 1em;
+	}
+
+
+	div.userAmado, div.menosAmados, div.livros{
+		flex-direction: row;
+		overflow: scroll;
+		display: flex;
+		width: 100%
+	}
+
+	div.userAmado div{
+		width:50vw;
+		margin-left: 1em
+	}
+
+	div.menosAmados div{
+		width:50vw;
+		margin-left: 1em
+	}
+
+	div.livros div{
+		width: 50vw;
+		margin-left: 1em;
+		text-align: center;
+		justify-content: center;
+	}
+
+	div.input{
+		display: flex; 
+		flex-direction: row;
+		margin-top: 3em;
+		margin-left: 1em; 
+	}
+
+	img.perfil{
+		border-radius: 100px;
+	}
+
+	div.titulo, div.nome{
+		font-weight: bold
+	}
+
+	input{
+		border-radius: 5px;
+        position: center;
+        display: flex;
+        width: 80%;
+        height: 5vh;
+        font-family: Open sans;
+        font-size: 4.5vw;
+		
+	}
+
+	footer{
+		display: flex;
+		flex-direction: row;
+		width: 100%;
+		flex-grow: 4;
+		background-color: #98b7d6;
+		font-family: Open sans;
+		height: 9vh;
+		color: white;
+		text-align: center;
+		position: fixed; 
+		bottom: 0;
+		border: 0;
+		border-right: none;
+	}
+
+	.container{
+		display: flex;
+		flex-direction: column;
+	}
+
+	.container div{
+		background-color: white;
+		width: 85%;
+		border-radius: 5px;
+		align-items: center;
+		font-family: 'open sans';
+		margin-top: 1em;
+	}
+
+	.container .pai{
+		display: flex;
+		background-color: white;
+		width: 85%;
+		border-radius: 5px;
+		align-items: center;
+		font-family: 'open sans';
+		margin-top: 1em;
+		align-self:center;
+	}
+
+	.container .divzinha{
+		display: flex;
+		flex-direction: column;
+	}
+	button.busca{
+		height: 5vh;
+		width: 5vw;
+		background-color: white;
+		border-radius: 5px
+	}
+
+	.foto_perfil-buscar{
+		display: flex;
+		justify-content: flex-end;
+		align-self: flex-end;
+		width: 90px;
+		height: auto;
+		margin: 1em;
+	}
+
+	button.footer {
+		background-color: #98b7d6;
+		border: none;
+		color:black;
+		flex-grow: 1;
+		font-size: 18px;
+	}
+
+	.foto_item{
+		width: 60%;
+		height: auto;
+		align-self: center;
+		justify-content: center;
+	}
+
+	h1{
+		font-size: 20px;
+		align-self: center;
+		position: fixed,top;
+	}
+
+	h2{
+		font-size: 15px;
+		align-self: center;
+	}
+
+	</style>
+	
+
+</head>
+
+<body>
+	<div class = mom>
+		<div class="logo">
+		bloop 
+		</div>
+		<div class="bsc">
+			
+		</div>
+		<div class="container">
+
+			<div class="preferidos">
+				<div class="titulo">
+				<h1>💙 muito amor 💙</h1>
+				<h2>os 5 usuários mais bem avaliados de todo o app</h2>
+			</div>
+
+				<div class="userAmado">
+					
+				</div>
+			
+			</div>
+
+
+			<div class="obras">
+				<h1>💚 terra adorada 💛</h1>
+				<h2>só obras nacionais</h2>
+				<div class="livros">
+					
+				</div>
+			</div>
+
+
+			<div class="odiados">
+				<h1>💔 queremos uma chance 💔</h1>  
+				<h2>usuários nem tão bem avaliados, mas que podem ter algo bom a oferecer</h2>
+
+				<div class="menosAmados">
+					
+				</div>
+			</div>
+
+		</div>
+
+
+	</div>
+
+	<footer>
+		<button class="footer"><a href="buscar.html">buscar</a></button>
+		<button class="footer"><a href="cadItem.html">vender</a></button>
+		<button class="footer"><a href="desejos.html">desejos</button>
+		<button class="footer"><a href="perfilUsuario.html">perfil</a></button>
+	</footer>
+</body>
+
+<script src="check-login.js"></script>
+<script type="text/javascript">
+	
+	var amados = document.querySelector("div.userAmado");
+	var menosAmados = document.querySelector("div.menosAmados");
+	var livros = document.querySelector("div.livros");
+	var buscar = document.querySelector(".bsc");
+	var container = document.querySelector('.container');
+	var form = null;
+	var formInput = null
+
+
+	function createDivzona(){
+			var preferidos = document.querySelector('.preferidos');
+			var obras = document.querySelector('.obras');
+			var odiados = document.querySelector('.odiados');
+			console.log(preferidos)
+
+			container.appendChild(preferidos);
+			container.appendChild(obras);
+			container.appendChild(odiados);
+		}
+
+		createDivzona();
+
+	async function buscarCoisa() { //função de pesuisar, busca apenas itens e tem um limite de 10 senão trava tudo
+		buscar.addEventListener('click', async (ev)=>{
+			ev.preventDefault();
+			var req = await fetch(`../consulta/pesquisar.php?objeto=${formInput.value}`, {method: 'POST'})
+			var json = await req.json()
+
+			container.innerHTML = ""
+
+			json.forEach( async item=>{
+				console.log(item)
+
+            	let div = document.createElement('img');
+            	let div1 = document.createElement('div');
+            	let div2 = document.createElement('div');
+            	let div3 = document.createElement('div');
+            	let div4 = document.createElement('div');
+            	let divzinha = document.createElement('div');
+
+				div.setAttribute("class","foto_perfil-buscar");
+				div.setAttribute("src", `../uploads/${item.id_usuario}/itens/${item.foto_item}`);
+				div1.setAttribute("class","titulo");
+				div2.setAttribute("class","subtitulo");
+				div3.setAttribute("class","valor");
+				div4.setAttribute("class", "pai");
+
+				div.innerText = item.foto_item; 
+
+				div1.innerText = item.titulo; 
+				div2.innerText = item.subtitulo; 
+				div3.innerText = "R$" + item.valor;
+
+                div.addEventListener('click', (ev)=>{
+                	ev.stopPropagation();
+                	location.href="item.html?id_item="+ item.id_item
+                })
+   				div1.addEventListener('click', (ev)=>{
+   					ev.stopPropagation();
+                	location.href="item.html?id_item="+ item.id_item
+                })
+   				div2.addEventListener('click', (ev)=>{
+   					ev.stopPropagation();
+                	location.href="item.html?id_item="+ item.id_item
+                })
+   				div3.addEventListener('click', (ev)=>{
+   					ev.stopPropagation();
+                	location.href="item.html?id_item="+ item.id_item
+                })
+
+                divzinha.appendChild(div1);
+                divzinha.appendChild(div2);
+                divzinha.appendChild(div3);
+   		          
+   				div4.appendChild(div);
+   				div4.appendChild(divzinha);
+   				container.appendChild(div4);
+
+        	})
+        })
+
+	}
+
+	function createForm() { // aqui é criado o form, ele não ta escrito la em cima junto com o html
+		form = document.createElement('form');
+		let div = document.createElement('div');
+		formInput = document.createElement('input');
+		let button = document.createElement('button');
+
+		form.setAttribute('action', '../consulta/pesquisar.php');
+		form.setAttribute('method', 'POST');
+		div.setAttribute('class', 'input')
+		button.setAttribute('name', 'busca')
+		button.innerText = "🔎";
+		formInput.setAttribute("type","text")
+		formInput.setAttribute("name","pesquisar")
+		formInput.setAttribute("placeholder","Busque novas leituras")
+		div.appendChild(formInput);
+		div.appendChild(button);
+		form.appendChild(div);
+		buscar.appendChild(form);
+	}
+
+	createForm()
+
+	buscarCoisa();
+
+	    async function buscarMelhor(){ //busca os 5 melhores avaliados
+
+            var requisicao = await fetch(`../consulta/melhor-usuario.php`);
+            var usuarios = await requisicao.json();
+
+            usuarios.forEach(usuario=>{
+
+            	console.log(usuario.id_usuario)
+            	let div = document.createElement('img');
+            	let div1 = document.createElement('div');
+            	let div2 = document.createElement('div');
+            	let div3 = document.createElement('div');
+            	let div4 = document.createElement('div');
+            	let div5 = document.createElement('div')
+
+				div.setAttribute("class","foto_perfil");
+				//div.setAttribute("src", `../uploads/${usuario.id_usuario}/itens/${usuario.foto_perfil}`); isso tá comentado porque não funciona e não sei como fazer funcionar
+				div1.setAttribute("class","nome");
+				div2.setAttribute("class","username");
+				div3.setAttribute("class","media_avaliacao");
+				div4.setAttribute("class","total_avaliacao");
+				
+				div.innerText = usuario.foto_perfil; 
+
+				div1.innerText = usuario.nome; 
+				div2.innerText = "@" + usuario.username; 
+				div3.innerText = "★ " + usuario.media_avaliacao; 
+				div4.innerText = "total de " + usuario.total_avaliacao + " avaliações"; 
+
+                div.addEventListener('click', (ev)=>{
+                	ev.stopPropagation();
+                	location.href="usuario.html?id_usuario="+ usuario.id_usuario
+                })
+   				div1.addEventListener('click', (ev)=>{
+   					ev.stopPropagation();
+                	location.href="usuario.html?id_usuario="+ usuario.id_usuario
+                })
+   				div2.addEventListener('click', (ev)=>{
+   					ev.stopPropagation();
+                	location.href="usuario.html?id_usuario="+ usuario.id_usuario
+                })
+   				div3.addEventListener('click', (ev)=>{
+   					ev.stopPropagation();
+                	location.href="usuario.html?id_usuario="+ usuario.id_usuario
+                })
+   				div4.addEventListener('click', (ev)=>{
+   					ev.stopPropagation();
+                	location.href="usuario.html?id_usuario="+ usuario.id_usuario
+                })             
+   				div5.appendChild(div);
+   				div5.appendChild(div1);
+   				div5.appendChild(div2);
+   				div5.appendChild(div3);
+   				div5.appendChild(div4);
+   				amados.appendChild(div5);
+
+        	})
+        }
+
+        buscarMelhor()
+	    async function buscarPior(){ //busca os 5 usuários com a pior média de avaliação
+
+            var requisicao = await fetch(`../consulta/pior-usuario.php`);
+            var usuarios = await requisicao.json();
+
+            usuarios.forEach(usuario=>{
+            	console.log(usuario.id_usuario)
+            	let div = document.createElement('div');
+            	let div1 = document.createElement('div');
+            	let div2 = document.createElement('div');
+            	let div3 = document.createElement('div');
+            	let div4 = document.createElement('div');
+            	let div5 = document.createElement('div')
+
+				div.setAttribute("class","foto_perfil");
+				div1.setAttribute("class","nome");
+				div2.setAttribute("class","username");
+				div3.setAttribute("class","media_avaliacao");
+				div4.setAttribute("class","total_avaliacao");
+				
+				div.innerText = usuario.foto_perfil; 
+				div1.innerText = usuario.nome; 
+				div2.innerText = "@" + usuario.username; 
+				div3.innerText = "★ " + usuario.media_avaliacao; 
+				div4.innerText = "total de " + usuario.total_avaliacao + " avaliações"; 
+
+                div.addEventListener('click', (ev)=>{
+                	ev.stopPropagation();
+                	location.href="usuario.html?id_usuario="+ usuario.id_usuario
+                })
+   				div1.addEventListener('click', (ev)=>{
+   					ev.stopPropagation();
+                	location.href="usuario.html?id_usuario="+ usuario.id_usuario
+                })
+   				div2.addEventListener('click', (ev)=>{
+   					ev.stopPropagation();
+                	location.href="usuario.html?id_usuario="+ usuario.id_usuario
+                })
+   				div3.addEventListener('click', (ev)=>{
+   					ev.stopPropagation();
+                	location.href="usuario.html?id_usuario="+ usuario.id_usuario
+                })
+   				div4.addEventListener('click', (ev)=>{
+   					ev.stopPropagation();
+                	location.href="usuario.html?id_usuario="+ usuario.id_usuario
+                })             
+   				div5.appendChild(div);
+   				div5.appendChild(div1);
+   				div5.appendChild(div2);
+   				div5.appendChild(div3);
+   				div5.appendChild(div4);
+   				menosAmados.appendChild(div5);
+
+        	})
+        }
+
+        buscarPior()
+
+
+        async function buscarObra(){
+
+            var requisicao = await fetch(`../consulta/buscarBrasileiro.php`);
+            var itens = await requisicao.json();
+
+            itens.forEach(item=>{
+            	console.log(item)
+            	let div = document.createElement('img');
+            	let div1 = document.createElement('div');
+            	let div2 = document.createElement('div');
+            	let div3 = document.createElement('div');
+
+				div.setAttribute("class","foto_item");
+				div.setAttribute("src", `../uploads/${item.id_usuario}/itens/${item.foto_item}`);
+				div1.setAttribute("class","titulo");
+				div2.setAttribute("class","valor");
+				
+				div.innerText = item.foto_item; 
+				div1.innerText = item.titulo; 
+				div2.innerText = "R$ " + item.valor; 
+			
+                div.addEventListener('click', (ev)=>{
+                	ev.stopPropagation();
+                	location.href="item.html?id_item="+ item.id_item
+                })
+   				div1.addEventListener('click', (ev)=>{
+   					ev.stopPropagation();
+                	location.href="item.html?id_item="+ item.id_item
+                })
+   				div2.addEventListener('click', (ev)=>{
+   					ev.stopPropagation();
+                	location.href="item.html?id_item="+ item.id_item
+                })
+   				div3.addEventListener('click', (ev)=>{
+   					ev.stopPropagation();
+                	location.href="item.html?id_item="+ item.id_item
+                })        
+   				div3.appendChild(div);
+   				div3.appendChild(div1);
+   				div3.appendChild(div2);
+   				livros.appendChild(div3);
+
+        	})
+        }
+
+        buscarObra()
+
+</script>
+
+
+
+</html>
